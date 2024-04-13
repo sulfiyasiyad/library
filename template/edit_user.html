@@ -1,0 +1,81 @@
+{% extends 'navfour.html' %}
+{% block content %}
+{% load static %}
+
+    <style>
+       .container {
+      margin-top: 50px;
+      background-color: blueviolet;
+      
+    }
+  
+     
+    
+
+    </style>
+      {% if messages %}
+      <div class="messages">
+        {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>
+          {{ message }}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <u>
+      <h2 style="text-align: center;">Edit Here</h2></u>
+      <div class="container">
+       
+        <form action="{% url 'user_editdetails' %}" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="first Name">Fist Name:</label>
+            <input type="text" class="form-control" id="fullName" placeholder="Enter your first name" required name="first_name" value="{{user.first_name}}">
+          </div>
+          <div class="form-group">
+            <label for="Last name">Last Name:</label>
+            <input type="text" class="form-control" id="lastname" placeholder="Enter Last name" required name="last_name" value="{{user.last_name}}">
+          </div>
+          <div class="form-group">
+            <label for="password">email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter Email" required name="email" value="{{user.email}}">
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">username:</label>
+            <input type="text" class="form-control" id="confirmPassword" placeholder="enter the username" required name="username" pattern="[a-z]{4,8}" maxlength="8" value="{{user.username}}" title="maximum length is eight and numbers are not allowed">
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Phone:</label>
+            <input type="tel" class="form-control" id="confirmPassword" placeholder="enter the phone" required name="number"  value="{{usermember1.number}}" pattern="[1-9]{1}[0-9]{9}">
+          </div>
+         
+            
+          
+          <div class="form-group">
+            <label for="profileImage">Profile Image:</label>
+            <img src="{{usermember1.uImage.url}}"><br>{{usermember.uImage}}<br><br>
+            <input type="file" class="form-control-file" id="profileImage"  name="file" accept="image/*">
+          </div>
+          <button type="submit" class="btn btn form-control" style="background-color: rgb(184, 56, 122);">Submit</button>
+        </form>
+      </div>
+      
+ <script>
+  function validateForm() {
+    var emailInput = document.getElementById('email').value;
+   
+    if (!emailInput.endsWith('gmail.com')) {
+      alert('Please enter a valid email address ending with "gmail.com".');
+      return false; // Prevent form submission
+    }
+    return true; // Allow form submission
+  }
+ </script>     
+      
+      
+</body>
+{% endblock %}
+
+
+
+</html>

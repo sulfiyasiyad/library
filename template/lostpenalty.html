@@ -1,0 +1,55 @@
+{% extends 'v2admin2.html' %}
+{% block content %}
+{% load static %}
+<body>
+  <div class="col-lg-9 col-md-8" style="margin-top: 80px;" >
+    <u>
+      <h2 style="text-align: center;" >Lost Book and Users History !!!</h2></u>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-inverse">
+                
+                <tr>
+                 
+                  <th scope="col">Name</th>
+                 
+                  <th scope="col">Email</th>
+                  <th scope="col">Payed Amount</th> 
+                  <th scope="col">View Product</th>
+
+                  
+                 
+               
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in a %}
+                <tr>
+               
+                  <td>{{d.fname}}{{d.lname}}</td>
+                  <td>{{d.user.email}}</td>
+                  <td>{{d.total_price}}</td>
+                  <td><a href="{% url 'lostpenalty_product' d.id %}" class="btn btn-danger badge">View product</a></td>
+                  
+                  
+                  <!-- <td><button type="submit"><a href="">Delete</a></button></td> -->
+                </tr>
+                {% endfor %}
+            </tbody>
+  
+            
+        </table>
+    </div>
+  </div>
+{% endblock %}
+  
+
+
+
+
+
+
+
+
+
+

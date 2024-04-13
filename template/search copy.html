@@ -1,0 +1,200 @@
+{% extends 'navfour.html' %}
+{% block content %}
+{% load static %}
+<style>
+   body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* This ensures that the footer sticks to the bottom */
+}
+
+.content {
+    flex: 1; /* This allows the content to grow and push the footer to the bottom */
+    padding: 20px;
+}
+
+.footer {
+    background-color: blueviolet;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    bottom: 0%;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to next line if needed */
+    justify-content: center; /* Center items horizontally */
+}
+
+.footer-section {
+    flex: 1;
+    margin: 10px; /* Add margin between sections */
+    max-width: 500px; /* Limit width of each section */
+}
+
+.footer-section h3 {
+    margin-bottom: 10px;
+}
+
+</style>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for i in d %}
+        <img src="{{i.Image.url}}">
+        {{i.book_name}}
+        {{i.book_price}}
+    {% endfor %}  -->
+    <!-- {% if not result %}
+    <h1>Item is not found</h1>
+    {% endif %} -->
+     
+    <!-- <div class="container">
+    
+       
+       {% for x in d %}
+       <div class="row mx-auto"> 
+         <div class="col-lg-4 col-md-4 col-12">
+         <div class="card" style="width: 18rem;">
+         <img src="{{x.Image.url}}" class="card-img-top" alt="...">
+         <div class="card-body">
+           <h5 class="card-title">{{x.book_name}}</h5>
+           
+           <a href="{{x.get_absolute_url}}" class="btn btn-primary">Go Full pic</a>
+         </div>
+        </div>
+    
+     </div>
+    {% endfor %}
+    
+       {% if not result %}
+        <p class="lead"> Here is no results for your "{{query}}"</p>
+       {% endif %}
+    
+      </div>
+     -->
+
+<!-- 
+</body>
+</html> -->
+<!-- <h1>Search Page</h1>
+
+Search Posts<br/>
+<br/>
+{% if results %}
+<h1>Results for <b>{{ request.GET.q }}</b></h1>
+<br/><br/>
+
+{% for result in results %}
+
+{{result.book_name}}
+<a href="{% url 'product' result.id  %}">
+
+<img src="{{result.Image.url}}"></a>
+{{result.book_price}}
+
+<br/>
+
+{{result.content}}
+<br/>
+
+{% endfor %}
+{% else %}
+No search results for this query
+{% endif %} -->
+
+
+
+
+
+
+{% if results %}
+<h1>Results for <b>{{ request.GET.q }}</b></h1>
+<br/><br/>
+<div class="container mt-4">
+  {% for x in results %}
+  {% if forloop.first %}
+  <div class="row mx-auto"> 
+    {% endif %}
+    <div class="col-lg-4 col-md-4 col-12">
+    <div class="card" style="width: 18rem;">
+      <a href="{% url 'product' x.id  %}">
+      <img src="{{x.Image.url}}" class="card-img-top" style="height: 250px;"></a>
+
+    <div class="card-body">
+      <h6 class="card-title" style="text-align: center">{{x.book_name}}</h6>
+      <h6 class="card-title" style="text-align: center">Price:₹{{x.book_price}}</h6>
+      <h6 class="card-title" style="text-align: center">Renting:₹{{x.book_rent}}</h6>
+      
+      <!-- {% if x.book_stock <= 0  %}
+        <h5 style="color:red">out of stock</h5>
+      {% else %}
+        <h5 style="color:green">Available</h5>
+      {% endif %}
+      <input type="text" name="n1" value="{{x.id}}"> -->
+      <!-- {% if x.book_stock > 0 %}
+    
+      
+      {% endif %} --> 
+     
+
+     
+
+    </div>
+  </div>
+
+</div>
+
+{% endfor %}
+
+
+{% else %}
+<h4 style="text-align: center;">No search results for this query</h4>
+{% endif %}
+<div class="content">
+  <!-- Your page content goes here -->
+</p>
+</div>
+
+<footer class="footer">
+  <!-- Footer content goes here -->
+  <div class="footer-content">
+      <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>Email:sulfiyacs16@gmail.com<br>Phone: 9847992356</p>
+      </div>
+      <div class="footer-section">
+          <h3> About Us</h3>
+          <p>About us</p>
+          <p>Terms & Policies</p>
+          
+      </div>
+      <div class="footer-section">
+          <h3>Address</h3>
+          <p>opposite Q and Q mall mullinkal junction kanjiramttom</p>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+

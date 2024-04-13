@@ -1,0 +1,206 @@
+{% extends 'navfour1.html' %}
+{% block content %}
+{% load static %}
+
+ <!-- <h1>return</h1>
+<ul class="list-disc px-4 mt-8">
+    {% for issue in issues %}
+    <li class="">
+      <h3 class="text-xl font-semibold tracking-wide">
+        {{issue.book.book_name}} Issue Requested
+      </h3>
+      <h4 class="text-xs">{{issue.created_at}}</h4>
+      <div class="flex flex-row w-2/3 space-x-4 mt-4 mb-8">
+        {% if issue.issued %}
+        <h5 class="w-xs font-bold rounded-600 px-4 py-1" style="background-color: green;">Issued</h5>
+        <h5 class="w-xs font-bold text-red-500 px-4 py-1">
+          Return Date : {{issue.return_date}}
+        </h5>
+        {% else %}
+        
+        {% endif %}
+        
+        {% if issue.issued and issue.returned %}
+        <h5 class="w-xs rounded font-bold bg-green-600 px-4 py-1">Returned</h5>
+        {% else %}
+        <h5 class="w-xs font-bold px-4 py-1">{{issue.days_no}}</h5>
+        <a
+          class="w-xs rounded bg-green-500 px-4 py-1 text-black"
+          href="{% url 'return_book' issue.id %}"
+          >return book</a
+        >
+      
+  
+        
+  
+        {% endif %}
+    
+      </div>
+    </li>
+    {% empty %}
+    <h2>Nothing Found</h2>
+    {% endfor %}
+  </ul> -->
+
+  <!-- {% for issue in issues %}
+  <div class="container py-5">
+    <div class="row justify-content-center mb-3">
+      <div class="col-md-12 col-xl-10">
+        <div class="card shadow-0 border rounded-3">
+         
+
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                  <img src="{{issue.book.Image.url}}"
+                    class="w-20" />
+                  <a href="#!">
+                    <div class="hover-overlay">
+                      <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-6 col-xl-6">
+                <h5>{{issue.book.book_name}}</h5>
+                
+                <div class="mt-1 mb-0 text-muted small">
+                  <span>Rent Price:{{issue.book.book_rent}}</span>
+                  
+                </div>
+              </div>
+              {% if issue.issued %}
+              <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+                <h6 class="text-success">{{issue.returndate}}</h6>
+                <div class="d-flex flex-column mt-4">
+                  <h6 style="color: green;">Issued</h6>
+              {% else %}
+                  
+                
+                 
+                  
+              
+                </div>
+              </div>
+
+
+              {% endif %}
+                {% if issue.issued and issue.returned %}
+                <h6 style="color: blue;">
+                  Returned
+                </h6>
+                {% else %}
+                <h6 class="text-danger">{{issue.days_no}}</h6>
+                <form action="{% url 'return_book' issue.id %}" method="post">
+                  {% csrf_token %}
+                <button class="btn btn-primary btn-sm">return book</button></form>
+        
+             
+                
+              
+                </div>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+   
+  
+    
+  </div>
+  {% empty %}
+  <h1 style="text-align: center;">Not Found</h1>
+  {% endfor %}
+</section> -->
+<style>
+  @media (max-width: 767.98px) { .border-sm-start-none { border-left: none !important; } }
+</style>
+
+
+<section style="background-color: #eee;">
+  {% for issue in issues %}
+  <div class="container py-5">
+    <div class="row justify-content-center mb-3">
+      <div class="col-md-12 col-xl-10">
+        <div class="card shadow-0 border rounded-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                  <img src="{{issue.book.Image.url}}"
+                    class="w-50" />
+                  <a href="#!">
+                    <div class="hover-overlay">
+                      <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-6 col-xl-6">
+                <h5>{{issue.book.book_name}}</h5>
+                <div class="mt-1 mb-0 text-lack small">
+                  <span>Quantity:{{issue.quantity}}</span>
+                </div>
+                <div class="mb-2 text-black small">
+                  <span>Auther Name:{{issue.book.auther_name}}</span>
+                  
+                </div>
+                <div class="mb-2 text-black small">
+                  <span>Rent Price:{{issue.book.book_rent}}</span>
+                  
+                </div>
+                <div class="mb-2 text small" style="color: red;">
+                  <span>Return date:{{issue.returndate}}</span>
+                  
+                </div>
+               
+              </div>
+              <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+              
+
+                <div class="d-flex flex-row align-items-center mb-1">
+                  
+                </div>
+                {% if issue.issued %}
+                
+                <div class="d-flex flex-column mt-4">
+                  <button class="btn btn-primary btn-sm" type="button">Issued</button>
+                {% endif %}
+                {% if issue.issued and issue.returned %}
+                  <button class="btn btn-primary btn-sm mt-2" type="button">
+                    Returned
+                  </button>
+                {% else %}
+                <h6 class="w-xs font-bold px-4 py-1"  style="color: red;">{{issue.days_no}}</h6>
+
+                
+                <button class="btn btn-outline-primary btn-sm mt-2" type="button" ><a href="{% url 'return_book' issue.id %}">
+                  Return Book
+                </button></a>
+               
+                {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  {% empty %}
+  <h1 style="text-align: center;">Not Found</h1>
+  {% endfor %}
+  
+</section>
+
+
+
+
+
+
+  {% endblock %}

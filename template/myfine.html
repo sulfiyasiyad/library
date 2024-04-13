@@ -1,0 +1,209 @@
+{% extends 'navfour1.html' %}
+{% block content %}
+{% load static %}
+
+<!-- {% for i in fines %}
+<img src="{{i.requestbook.book.Image.url}}">
+{{i.requestbook.book.book_name}}
+<h5>{{i.requestbook.book.auther_name}}</h5>
+Payable Amount:₹{{i.amount}}
+{% if i.paid %}
+<h1>paid</h1>
+{% else %}
+<a href="{% url 'pay' i.id  %}">pay</a>
+{% endif %}
+{% endfor %}
+Payable Amount:₹{{total_price}} -->
+{% if messages %}
+<div class="messages">
+  {% for message in messages %}
+  <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>
+    {{ message }}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+<!-- <div class="container" style="background-color: rgb(196, 154, 235);">
+{% for i in book %}
+<form action="{% url 'add_issue' i.id  %} " method="post">
+    {% csrf_token %}
+
+{{i.book.book_name}}
+{{i.book.book_rent}}
+<label>Issue date</label>
+<input type="date" name="n1">
+<label>Return Date</label>
+<input type="date" name="n2">
+<button type="submit" value="click">Request Book</button>
+
+</form> 
+    
+{% endfor %}
+</div> -->
+<!-- <style>
+  @media (max-width: 767.98px) { .border-sm-start-none { border-left: none !important; } }
+</style>
+<section style="background-color: #eee;">
+  {% for i in fines %}
+  <form action="" method="post">
+    {% csrf_token %}
+  <div class="container py-5">
+    <div class="row justify-content-center mb-3">
+      <div class="col-md-12 col-m-10">
+        <div class="card shadow-0 border rounded-3">
+         
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12 col-lg-2 col-m-3 mb-4 mb-lg-0">
+                <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                  <img src="{{i.requestbook.book.Image.url}}"
+                    class="w-50" />
+                  <a href="#!">
+                    <div class="hover-overlay">
+                      <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                    </div>
+    
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 col-s-2">
+                <h6>Book Name</h6>
+                <h6>{{i.requestbook.book.book_name}}</h6>
+
+              
+              </div>
+              <div class="col-md-6 col-lg-2 col-s-3">
+                <h6>Fine</h6>
+              
+                <h6>{{i.amount}}</h6>
+
+              
+              </div>
+              
+              <div class="col-md-6 col-lg-2 col-s-3">
+                <h6>Return Date</h6>
+                <h6>{{i.requestbook.returndate}}</h6>
+
+              
+              </div>
+            
+
+              <div >
+                {% if i.paid %}
+              
+                <h1 class="btn btn-primary btn-sm " style="margin-top: 20px;" >paid</h1>
+                {% else %}
+
+                <a class="btn btn-primary btn-sm" href="{% url 'pay' i.id  %}" style="margin-top: 20px;">pay</a>
+                          
+              </div>
+              {% endif %}
+             
+            </div>
+          </div>
+        
+          
+         
+        </div>
+      </div>
+    </div>
+    
+     
+  </div>
+  </form>
+  {% empty %}
+  <h1 style="text-align: center;">No fines</h1>
+  {% endfor %} -->
+  <style>
+    @media (max-width: 767.98px) { .border-sm-start-none { border-left: none !important; } }
+  </style>
+  <section style="background-color: #eee;">
+    {% for i in fines %}
+  
+    <div class="container py-5">
+      <div class="row justify-content-center mb-3">
+        <div class="col-md-12 col-m-10">
+          <div class="card shadow-0 border rounded-3">
+           
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12 col-lg-2 col-m-3 mb-4 mb-lg-0">
+                  <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                    <img src="{{i.requestbook.book.Image.url}}"
+                      class="w-50" />
+                    <a href="#!">
+                      <div class="hover-overlay">
+                        <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                      </div>
+      
+                    </a>
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-3 col-s-2">
+                  <h6>Book Name</h6>
+                  <h6>{{i.requestbook.book.book_name}}</h6>
+  
+                
+                </div>
+                
+
+                <div class="col-md-6 col-lg-2 col-s-3">
+                  <h6>Fine</h6>
+                
+                  <h6>{{i.amount}}</h6>
+  
+                
+                </div>
+                <div class="col-md-6 col-lg-2 col-s-3"> 
+                  <h6>Issue Date</h6>
+  
+                  <h6>{{i.requestbook.Issuedate}}</h6>
+  
+                
+                </div>
+                <div class="col-md-6 col-lg-2 col-s-3">
+                  <h6>Return Date</h6>
+                  <h6>{{i.requestbook.returndate}}</h6>
+  
+                
+                </div>
+                <div>
+                  {% if i.paid %}
+              
+                <h1 class="btn btn-primary btn-sm " style="margin-top: 20px;" >paid</h1>
+                {% else %}
+
+                <a class="btn btn-primary btn-sm" href="{% url 'pay' i.id  %}" style="margin-top: 20px;">pay</a>
+                          
+              </div>
+              {% endif %}
+                  
+                 
+  
+                
+                </div>
+               
+              </div>
+            </div>
+          
+            
+           
+          </div>
+        </div>
+      </div>
+      
+       
+    </div>
+    
+    {% empty %}
+    <h1 style="text-align: center;">Not Found</h1>
+   
+    {% endfor %}
+  </section>
+
+
+
+
+
+
+{% endblock %}

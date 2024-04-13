@@ -1,0 +1,203 @@
+{% extends 'v2admin.html' %}
+{% block content %}
+{% load static %}
+
+<!-- <style>
+	table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 80%;
+  table-layout: fixed;
+  margin-top: 70px;
+  margin-left: 20px;
+  
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+	
+  }
+  
+  table td::before {
+    
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.25;
+}
+</style>
+<table >
+	
+	<thead>
+	  <tr>
+		
+		<th scope="col">Id</th>
+		<th scope="col">Image</th>
+        <th scope="col" style="width: 10%;"> Book Name</th>
+        <th scope="col" style="width: 35%;">Descritpion</th>
+        <th scope="col">Auther name</th>
+        <th scope="col">Price</th>
+		<th scope="col">Rent Price</th>
+        <th scope="col">Book Stock</th>
+        <th scope="col" style="width: 10%;">Category</th>
+       
+        <th scope="col">Action</th>
+	  </tr>
+	</thead>
+	<tbody>
+	{% for s in book %}
+	  <tr>
+		<td data-label="Id">{{s.id}}</td>
+		<td data-label="Image"> <img src={{s.Image.url}}  width="20%"></td>
+		<td data-label="Name">{{s.book_name }}  </td>
+		<td data-label="Description" style="width: 40%;" >{{s.book_description}} </td>
+		<td data-label="Auther name">{{s.auther_name}} </td>
+		<td data-label="Book Price">{{s.book_price}} </td>
+		<td data-label="Book Rent">{{s.book_rent}} </td>
+		<td data-label="Book Stock">{{s.book_stock}} </td>
+		<td data-label="Category">{{s.category.category}}</td> </td>
+
+		<td data-label="Action">
+		<a href="{% url 'edit_book' s.id %}" class="btn btn-primary badge">Edit</a></button>
+        <a href="{% url 'delete_book' s.id %}"  class="btn btn-danger badge">Delete</a></button>
+		</td>
+	  </tr>
+	{% endfor %}
+	  
+	</tbody>
+  </table>
+   -->
+  
+  
+   <div class="col-lg-9 col-md-8" style="margin-top: 80px;" >
+    <u>
+    <h2 style="text-align: center; color: blueviolet;">Book Display Page</h2></u>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-inverse">
+                
+                <tr>
+               
+                  <th scope="col">Image</th>
+                  <th scope="col">Book</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Rent Price</th>
+                  <th scope="col">Stock</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Action</th>
+
+                  
+               
+                </tr>
+            </thead>
+            <tbody>
+              {% for issue in book %}
+              <tr>
+                <td><img src={{issue.Image.url}}  width="20%"></td>
+                <td >{{issue.book_name }}  </td>
+            
+                <td >{{issue.book_description}}</td>
+                <td>{{issue.book_price}} </td>
+                <td>{{issue.book_rent}} </td>
+                <td>{{issue.book_stock}}</td>
+                <td>{{issue.category.category}}</td></td>
+                
+
+                <td>
+                <a href="{% url 'edit_book' issue.id %}" class="btn btn-primary badge">Edit</a></button>
+                <a href="{% url 'delete_book' issue.id %}"  class="btn btn-danger badge">Delete</a></button>
+                  
+                </td>
+              </tr>
+           
+              {% endfor %}
+            </tbody>
+          </table> 
+        </div>
+      </div>
+   
+
+   
+   
+    
+
+{% endblock %}
+</html>

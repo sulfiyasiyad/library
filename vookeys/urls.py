@@ -1,0 +1,77 @@
+from django.urls import path,include
+from.import views
+urlpatterns = [
+    path('',views.home,name='home'),
+    path('signin',views.signin,name='signin'),
+    path('add_signin',views.add_signin,name='add_signin'),
+    path('signup',views.signup,name='signup'),
+    path('add_signup',views.add_signup,name='add_signup'),
+    path('logout',views.logout,name='logout'),
+    path('home',views.home,name='home'),
+    path('cart',views.cart,name='cart'),
+    path('search',views.search,name='search'),
+    path('add_contact',views.add_contact,name='add_contact'),
+
+
+    path('adminhome',views.adminhome,name='adminhome'),
+    path('admin_request',views.admin_request,name='admin_request'),
+    path('approve<int:pk>',views.approve,name='approve'),
+    path('disapprove<int:pk>',views.disapprove,name='disapprove'),
+    path('show_user',views.show_user,name='show_user'),
+    path('category',views.category,name='category'),
+    path('add_category',views.add_category,name='add_category'),
+    path('book',views.book,name='book'),
+    path('add_book',views.add_book,name='add_book'),
+    path('show_book',views.show_book,name='show_book'),
+    path('edit_book<int:pk>',views.edit_book,name='edit_book'),
+    path('book_edit<int:pk>',views.book_edit,name='book_edit'),
+    path('delete_book<int:pk>',views.delete_book,name='delete_book'),
+    path('delete_user<int:pk>',views.delete_user,name='delete_user'),
+    path('rent_adminhistory',views.rent_adminhistory,name='rent_adminhistory'),
+    path('admin_buy_history',views.admin_buy_history,name='admin_buy_history'), 
+    path('show<int:pk>',views.show,name='show'),
+
+    path('userhome',views.userhome,name='userhome'),
+    path('remove_cart<int:pk>',views.remove_cart,name='remove_cart'),
+    path('user_profile',views.user_profile,name='user_profile'),
+    path('user_edit',views.user_edit,name='user_edit'),
+    path('user_editdetails',views.user_editdetails,name='user_editdetails'),
+    path('change_password',views.change_password,name='change_password'),
+    path('add_cart<int:pk>',views.add_cart,name='add_cart'),
+    path('increase_cart<int:pk>',views.increase_cart,name='increase_cart'),
+    path('decrease_cart<int:pk>',views.decrease_cart,name='decrease_cart'),
+    path('checkout',views.checkout,name='checkout'),
+    path('placeorder',views.placeorder,name='placeorder'),
+    path('product<int:pk>',views.product,name='product'),
+    path('rent<int:pk>',views.rent,name='rent'),
+    path('Issue',views.Issue1,name='Issue1'),
+    path('add_issue<int:pk>',views.add_issue,name='add_issue'),
+    path('issuebook/<int:issueID>/',views.issue_book,name='issue_book'),
+    path('requestedissues',views.requestedissues,name='requestedissues'),
+    path('view_issuedbook',views.view_issuebook,name='view_issuedbook'),
+    path('return_book/<int:issueID>/',views.return_book,name='return_book'),
+    path('main_return',views.main_return,name='main_return'),
+    path('view_notissue',views.view_notissue,name='view_notissue'),
+    path('lost',views.lost,name='lost'),
+    path('lost_send<int:pk>',views.lost_send,name='lost_send'),
+    path('admin_lost',views.admin_lost,name='admin_lost'),
+    path('lost_fine<int:pk>',views.lost_fine,name='lost_fine'),
+    path('add_fine<int:pk>',views.add_fine,name='add_fine'),
+    path('pay_fine',views.pay_fine,name='pay_fine'),
+    path('checkout_pay',views.checkout_pay,name='checkout_pay'),
+    path('paydetails',views.paydetails,name='paydetails'),
+    path('pay<int:pk>',views.pay,name='pay'),
+    path('rentfine',views.rentfine,name='rentfine'),
+    path('lostpenalty',views.lostpenalty,name='lostpenalty'),
+    path('lostpenalty_product<int:pk>',views.lostpenalty_product,name='lostpenalty_product'),
+    path('return_history',views.return_history,name='return_history'),
+    path('notification',views.notification,name='notification'),
+    path('user_ordedproduct',views.user_ordedproduct,name='user_ordedproduct'),
+
+
+    
+
+
+    
+    
+]

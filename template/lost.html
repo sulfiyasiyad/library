@@ -1,0 +1,103 @@
+{% extends 'navfour1.html' %}
+{% block content %}
+{% load static %}
+<!-- {% for i in issues %}
+{{i.book.book_name}}
+{{i.book.book_rent}}
+{{i.Issuedate}}
+{{i.returndate}} 
+<a href="{% url 'lost_send' i.id %}">Lost</a>
+{% endfor %} -->
+{% if messages %}
+<div class="messages">
+  {% for message in messages %}
+  <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>
+    {{ message }}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+
+
+<style>
+    @media (max-width: 767.98px) { .border-sm-start-none { border-left: none !important; } }
+  </style>
+  <u><h1 style="text-align: center;">Lost Book </h1></u>
+  <section style="background-color: #eee;">
+    {% for i in issues %}
+    <form action="{% url 'lost_send' i.id  %} " method="post">
+      {% csrf_token %}
+    <div class="container py-5">
+      <div class="row justify-content-center mb-3">
+        <div class="col-md-12 col-m-10">
+          <div class="card shadow-0 border rounded-3">
+           
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12 col-lg-2 col-m-3 mb-4 mb-lg-0">
+                  <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                    <img src="{{i.book.Image.url}}"
+                      class="w-50" />
+                    <a href="#!">
+                      <div class="hover-overlay">
+                        <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                      </div>
+      
+                    </a>
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-3 col-s-2">
+                  <h6>Book Name</h6>
+                  <h6>{{i.book.book_name}}</h6>
+  
+                
+                </div>
+                
+
+                <div class="col-md-6 col-lg-2 col-s-3">
+                  <h6>Rent Price</h6>
+                
+                  <h6>{{i.book.book_rent}}</h6>
+  
+                
+                </div>
+                <div class="col-md-6 col-lg-2 col-s-3"> 
+                  <h6>Issue Date</h6>
+  
+                  <h6>{{i.Issuedate}}</h6>
+  
+                
+                </div>
+                <div class="col-md-6 col-lg-2 col-s-3">
+                  <h6>Return Date</h6>
+                  <h6>{{i.returndate}}</h6>
+  
+                
+                </div>
+                <div>
+                  <button class="btn btn-primary btn-sm" type="submit" style="margin-top: 20px;">Lost</button>
+                  
+                 
+  
+                
+                </div>
+               
+              </div>
+            </div>
+          
+            
+           
+          </div>
+        </div>
+      </div>
+      
+       
+    </div>
+    </form>
+    {% empty %}
+    <h1 style="text-align: center;">Not Found</h1>
+   
+    {% endfor %}
+  </section>
+{% endblock %}

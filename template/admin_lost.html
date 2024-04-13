@@ -1,0 +1,97 @@
+{% extends 'v2admin2.html' %}
+{% block content %}
+{% load static %}
+{% if messages %}
+<div class="messages">
+  {% for message in messages %}
+  <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>
+    {{ message }}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+<div class="col-lg-7 col-md-8" style="margin-top: 80px;" >
+  <div class="table-responsive">
+      <table class="table table-striped">
+          <thead class="thead-inverse">
+            <tr>
+              <th scope="col">Book</th>
+              <th scope="col">Quantity</th>  
+              <th scope="col"> Rent Price</th>
+              <th scope="col"> Fine</th>            
+            </tr>
+          </thead>
+          <tbody>
+            {% for d in lost %}
+            <tr>
+              <td>{{d.book.book_name}}</td>
+              <td>{{d.quantity}}</td>
+                
+              <td>{{d.book.book_rent}}</td>
+                <!-- <td><a href="{% url 'lost_fine' d.id %}">Add</a></td> -->
+              <td>
+                <!-- Button to Open the Modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                  Add Fine
+                </button>
+                <!-- The Modal -->
+                <div class="modal" id="myModal">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <!-- Modal Header -->
+                      <div class="modal-header">
+                        <h4 class="modal-title">Modal Heading</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      <!-- Modal body -->
+                      <div class="modal-body">
+                        <form action="{% url 'add_fine' d.id  %}" method="post">
+                          {% csrf_token %}
+                          <input type="text" name="n1"><br>
+                          <select name="n2" style="width: 40%; margin-top: 5%;">
+                            <option value="lost">lost</option>
+                            <option value="broken">Broken</option>
+                          </select>
+                          
+                        
+
+
+
+
+                      </div>
+                      <!-- Modal footer -->
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger">Add</button>
+                      </div>
+                    </form>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+{% endblock %}
+
+            
+                

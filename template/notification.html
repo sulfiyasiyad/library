@@ -1,0 +1,48 @@
+{% extends 'v2admin2.html' %}
+{% block content %}
+{% load static %}
+<div class="col-lg-9 col-md-8" style="margin-top: 80px;" >
+  <u>
+    <h2 style="text-align: center;">Expiry Date Notification page</h2></u>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-inverse">
+                
+                <tr>
+                 
+                  <th scope="col">Name</th>
+                  <th scope="col">Username</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Book Name</th>
+                  <th scope="col">Issue date</th>
+                  <th scope="col">Return date</th>
+                  <th scope="col">Number of days before/after return date</th>
+                  
+               
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in a %}
+                <tr>
+                 
+                  <td>{{d.user.first_name}}{{d.user.last_name}}</td>
+                  <td>{{d.user.username}}</td>
+                  <td>{{d.user.email}}</td>
+                  <td>{{d.book.book_name}}</td>
+                  <td>{{d.Issuedate}}</td>
+                  <td>{{d.returndate}}</td>
+                  <td>{{d.days_no}}</td>
+                 
+                
+                </tr>
+                {% endfor %}
+            </tbody>
+  
+            
+        </table>
+    </div>
+  </div>
+  
+  
+
+{% endblock %}

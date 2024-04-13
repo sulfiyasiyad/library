@@ -1,0 +1,360 @@
+{% extends 'v2admin2.html' %}
+{% block content %}
+{% load static %}
+<body>
+  <div class="col-lg-9 col-md-8" style="margin-top: 80px;" >
+    <u>
+      <h2 style="text-align: center;">Buyers's History</h2></u>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-inverse">
+                
+                <tr>
+                  
+                  <th scope="col">Name</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Phone Number</th>
+                  <th scope="col">City</th>
+                  <th scope="col">State</th> 
+                  <th scope="col">View Product</th>
+
+                  
+                 
+               
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in history2 %}
+                <tr>
+                
+                  <td>{{d.user.first_name}}</td>
+                  <td>{{d.Address}}</td>
+                  <td>{{d.user.email}}</td>
+                  <td>{{d.phone}}</td>
+                  <td>{{d.city}}</td>
+                  <td>{{d.State}}</td>
+                  <td><a href="{% url 'show' d.id %}" class="btn btn-danger badge">View product</a></td>
+                  
+                  
+                  <!-- <td><button type="submit"><a href="">Delete</a></button></td> -->
+                </tr>
+                {% endfor %}
+            </tbody>
+  
+            
+        </table>
+    </div>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <!-- <table border="2px">
+        <thead>
+            <th>name</th>
+
+        </thead>
+        <tbody>
+            {% for i in history %}
+            <td>{{i.user.first_name}}</td>
+            {% endfor %}
+
+        </tbody> -->
+        <!-- <section class="section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <div class="card">
+                            <div class="card-header">
+                                <h1 class="fw-bold"></h1>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                           
+                                            <th>Name</th>
+                                            <th>Last Name</th>
+                                           
+                                            
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                              
+                                        {% for b in history2 %}
+                                        
+                                           <tr>
+                                               
+                                               <td>{{b.name }} </td>
+                                               <td>{{b.Address}}</td>
+                                               <td>{{b.Email}}</td>
+                                               <td>{{b.phone}}</td>
+                                               <button type="button"><a href="{% url 'show' b.id %}">Button</a></button>
+                                               
+                                               
+                                               
+                                           </tr>
+                                        
+                                        {% endfor %} 
+ 
+                             </tbody>
+                                    
+                              
+                                       
+                                
+                                
+        
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </section>
+       
+
+    </table> -->
+    <!-- <style>
+        @media
+	  only screen 
+    and (max-width: 760px), (min-device-width: 768px) 
+    and (max-device-width: 1024px)  { -->
+
+		<!-- /* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr {
+			display: block;
+		}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+    tr {
+      margin: 0 0 1rem 0;
+    }
+      
+    tr:nth-child(odd) {
+      background:  rgb(173, 246, 85);
+    }
+    
+		td {
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee;
+			position: relative;
+			padding-left: 50%;
+		}
+
+		td:before {
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 0;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+		}
+
+		/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+		td:nth-of-type(1):before { content: "Id"; }
+		td:nth-of-type(2):before { content: "Username"; }
+		td:nth-of-type(3):before { content: "Address"; }
+		td:nth-of-type(4):before { content: "Email"; }
+		td:nth-of-type(5):before { content: "Phone"; }
+		td:nth-of-type(6):before { content: "City"; }
+		td:nth-of-type(7):before { content: "State"; }
+		td:nth-of-type(8):before { content: "Country"; }
+		td:nth-of-type(9):before { content: "Action"; }
+		
+	}
+    </style>
+    <div class="container">
+        
+
+        <table role="table " border="2px">
+            <thead role="rowgroup" style="background-color: rgb(238, 19, 147);">
+              <tr role="row">
+               
+                <th role="columnheader">Id</th>
+                <th role="columnheader">Username</th>
+                <th role="columnheader">Address</th>
+                <th role="columnheader">Email</th>
+                <th role="columnheader">Phone</th>
+                <th role="columnheader">City</th>
+                <th role="columnheader">State</th>
+                <th role="columnheader">Country</th>
+                <th role="columnheader">Action</th>
+                
+                
+                
+              </tr>
+              </thead>
+              <tbody role="rowgroup" style="background-color:  rgb(173, 246, 85);">
+                {% for b in history2 %}
+                <tr role="row">
+                  <td role="cell">{{ b.id }} </td>
+                  <td role="cell">{{b.user.username }} </td>
+                  <td role="cell">{{b.Address}} </td>
+                  <td role="cell">{{b.Email}}</td>
+                  <td role="cell">{{b.phone}}</td>
+                  <td role="cell">{{b.city}}</td>
+                  <td role="cell">{{b.State}}</td>
+                  <td role="cell">{{b.country}}</td>
+                  <td role="cell"><button type="button"><a href="{% url 'show' b.id %}">View product</a></button></td>
+                </tr>
+              {% endfor %}
+        
+              </tbody>
+        </table>
+        </div>
+    
+</body> -->
+<!-- <style>
+  table {
+border: 1px solid #ccc;
+border-collapse: collapse;
+margin: 0;
+padding: 0;
+width: 100%;
+table-layout: fixed;
+}
+
+table caption {
+font-size: 1.5em;
+margin: .5em 0 .75em;
+}
+
+table tr {
+background-color: #f8f8f8;
+border: 1px solid #ddd;
+padding: .35em;
+}
+
+table th,
+table td {
+padding: .625em;
+text-align: center;
+}
+
+table th {
+font-size: .85em;
+letter-spacing: .1em;
+text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+table {
+border: 0;
+}
+
+table caption {
+font-size: 1.3em;
+}
+
+table thead {
+border: none;
+clip: rect(0 0 0 0);
+height: 1px;
+margin: -1px;
+overflow: hidden;
+padding: 0;
+position: absolute;
+width: 1px;
+}
+
+table tr {
+border-bottom: 3px solid #ddd;
+display: block;
+margin-bottom: .625em;
+}
+
+table td {
+border-bottom: 1px solid #ddd;
+display: block;
+font-size: .8em;
+text-align: right;
+}
+
+table td::before {
+/*
+* aria-label has no advantage, it won't be read inside a table
+content: attr(aria-label);
+*/
+content: attr(data-label);
+float: left;
+font-weight: bold;
+text-transform: uppercase;
+}
+
+table td:last-child {
+border-bottom: 0;
+}
+}
+/* general styling */
+body {
+font-family: "Open Sans", sans-serif;
+line-height: 1.25;
+}
+</style>
+<table style="margin-left: 10%;">
+ 
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">City</th>
+      <th scope="col">State</th>
+      <th scope="col">Country</th>
+      <th scope="col">Action</th>
+
+     
+    </tr>
+  </thead>
+  <tbody>
+  {% for b in history2 %}
+    <tr>
+      <td data-label="Name">{{b.user.first_name }} {{b.user.last_name }} </td>
+      <td data-label="Address">{{b.Address}}</td>
+     
+      <td  data-label="Email">{{b.Email}}</td>
+      <td data-label="Phone">{{b.phone}}</td>
+      <td data-label="City">{{b.city}}</td>
+      <td data-label="State">{{b.State}}</td>
+      <td data-label="Country">{{b.country}}</td>
+      <td data-label="Action"><a href="{% url 'show' b.id %}" class="btn btn-danger badge">View product</a></td>
+      
+    </tr>
+  {% endfor %} 
+ 
+      
+    </tbody>
+  </table> 
+  
+    
+
+
+</body> -->
+{% endblock %}
+</html>

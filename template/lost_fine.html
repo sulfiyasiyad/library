@@ -1,0 +1,16 @@
+{% for item in order1 %}
+{{item.book.book_name}}
+<form action="{% url 'add_fine' item.id  %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="n1">
+    <select name="n2">
+        <option value="lost">lost</option>
+        <option value="broken">Broken</option>
+    </select>
+    <button type="submit">Add</button>
+    
+</form>
+{% endfor %}
+
+
+

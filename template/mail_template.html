@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+    </div>
+    <div class="container my-4">
+        <h1>Your Order has been delivered with in 10 days </h1>
+        <ul class="list-group my-4">
+            <li class="list-group-item">Customar Name: {{first_name}}  {{last_name}}</li>
+            <li class="list-group-item">Customar Address: {{address}}</li>
+            <li class="list-group-item">Customar Email: {{email}}</li>
+        </ul>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    
+                    <th scope="col">Book</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">QTY</th>
+                
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in orderItem %}
+                <tr>
+                    <!-- <th scope="row">{{key}}</th> -->
+                    <td>{{item.book.book_name}}</td>
+                    <td>{{item.book.book_price}}</td>
+                    <td>{{item.quantity}}</td>
+                    
+                <tr>
+                {% endfor %}
+                    <th colspan="2">Grand Total</th>
+                    <th>{{totalPrice}}</th>
+                </tr>
+            </tbody>
+        </table>
+
+    
+</body>
+</html>

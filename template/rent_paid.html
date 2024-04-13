@@ -1,0 +1,65 @@
+{% extends 'v2admin2.html' %}
+{% block content %}
+{% load static %}
+
+<div class="col-lg-9 col-md-8" style="margin-top: 80px;" >
+  <u>
+    <h2 style="text-align: center;">Fine Details</h2></u>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-inverse">
+                
+                <tr>
+                 
+                  <th scope="col">Image</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Book</th>
+                  <th scope="col">Issue Date</th>
+                  <th scope="col">Return Date</th>
+                  <th scope="col"> Fine amount</th>
+
+                 
+                  <th scope="col">Action</th>
+                  
+                  
+               
+                </tr>
+            </thead>
+            <tbody>
+              {% for d in fine %}
+                {% if d.calc == 1 %}
+           
+                <tr>
+                  
+                  <td><img src="{{d.book.Image.url}}" width="20" ></td>
+                  <td>{{d.user.first_name}}{{d.user.last_name}}</td>
+                  
+                  <td>{{d.book.book_name}}</td>
+                  <td>{{d.Issuedate}}</td>
+                  <td>{{d.returndate}}</td>
+                  
+                  <td>{{d.amount}}</td>
+                <td>
+                    {% if d.paid %}
+                    <button type="button" class="btn btn-success badge">Paid</button>
+                    {% else %}
+                    <button type="button" class="btn btn-danger badge">Not paid</button>
+                    {% endif %}
+
+                  </td>
+                  
+                
+                </tr>
+              {% endif %}
+              {% endfor %}
+            </tbody>
+  
+            
+        </table>
+    </div>
+  </div>
+  
+
+
+
+{% endblock %}

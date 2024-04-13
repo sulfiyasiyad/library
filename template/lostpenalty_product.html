@@ -1,0 +1,43 @@
+{% extends 'v2admin2.html' %}
+{% block content %}
+{% load static %}
+<body>
+  <div class="col-lg-9 col-md-8" style="margin-top: 80px;" >
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-inverse">
+                
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Image</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Quantity</th> 
+                  
+
+                  
+                 
+               
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in a %}
+                <tr>
+                  <td>{{d.id}}</td>
+                  <td><img src="{{d.book.Image.url}}" width="20"></td>
+                  <td>{{d.book.book_name}}</td>
+                  <td>{{d.quantity}}</td>
+                  <td>{{total}}</td>
+                  
+                  
+                  
+                  <!-- <td><button type="submit"><a href="">Delete</a></button></td> -->
+                </tr>
+                {% endfor %}
+            </tbody>
+  
+            
+        </table>
+    </div>
+  </div>
+{% endblock %}
+  

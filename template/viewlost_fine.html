@@ -1,0 +1,188 @@
+{% extends 'navfour1.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
+
+<u><h1 style="text-align: center;">Penalty View page </h1></u>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-8">
+          {% for i in a %}
+          
+
+            <div class="card border shadow-none">
+           
+              
+            
+                <div class="card-body">
+
+                    <div class="d-flex align-items-start border-bottom pb-2">
+                        <div class="me-2">
+                            <img src="{{i.book.Image.url}}" alt="" class="avatar-lg rounded">
+                        </div>
+                        <div class="flex-grow-1 align-self-center overflow-hidden">
+                            <div>
+                                <h5 class="text-truncate font-size-18"><a href="#" class="text-dark">{{i.book.book_name}} </a></h5>
+                                
+                                 <!-- <p class="mb-0 mt-1">Color : <span class="fw-medium">Gray</span></p>  -->
+                             </div>
+                        </div>
+                        
+                    </div>
+
+                    <div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="mt-2">
+                                    <p class="text-muted mb-2">Price</p>
+                                    <h5 class="mb-0 mt-2"><span class="text-muted me-2"></span>{{i.book.book_price}}</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mt-3">
+                                    <p class="text-muted mb-2"> Rent Price</p>
+                                    <h5 class="mb-0 mt-2"><span class="text-muted me-2"></span>{{i.book.book_rent}}</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mt-3">
+                                    <p class="text-muted mb-2">Penalty</p>
+                                    <h5 class="mb-0 mt-2"><span class="text-muted me-2"></span>{{i.penalty}}</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mt-3">
+                                    <p class="text-muted mb-2">Quantity</p>
+                                    <div class="d-inline-flex">
+                                        {{i.quantity}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mt-3">
+                                    <p class="text-muted mb-2">Fine</p>
+                                    <h5>{{i.bookfine}}</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                              <div class="mt-3">
+                                  <p class="text-muted mb-2">Total</p>
+                                  <h5>{{i.subtotal}}</h5>
+                                 
+                              </div>
+                          </div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+              
+            </div>
+            {% empty %}
+                <h1 style="text-align: center;">No penalty</h1>
+            {% endfor %}
+            <!-- end card -->
+          
+
+            
+
+             <div class="row my-4">
+
+                <div class="col-sm-6">
+                    <div class="text-sm-end mt-2 mt-sm-0">
+                        <a href="{% url 'checkout_pay' %}" class="btn btn-success">
+                            </i> Make payment </a>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+
+        <div class="col-xl-4">
+            <div class="mt-5 mt-lg-0">
+                <div class="card border shadow-none">
+                    <div class="card-header bg-transparent border-bottom py-3 px-4">
+                        <h5 class="font-size-16 mb-0">Lost items <span class="float-end">{{total1}}</span></h5>
+                    </div>
+                    <div class="card-body p-4 pt-2">
+
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <tbody>
+                                   
+                                   
+                                    <tr class="bg-light">
+                                        <th>Total :</th>
+                                        <td class="text-end">
+                                            <span class="fw-bold">
+                                                {{total_price}}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <!-- end row -->
+    
+</div>
+<style>
+  body{
+   
+    background-color: #f1f3f7;
+}
+
+.avatar-lg {
+    height: 5rem;
+    width: 5rem;
+}
+
+.font-size-18 {
+    font-size: 18px!important;
+}
+
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+a {
+    text-decoration: none!important;
+}
+
+.w-xl {
+    min-width: 160px;
+}
+
+.card {
+     margin-bottom: 24px; 
+    -webkit-box-shadow: 0 2px 3px #e4e8f0;
+    box-shadow: 0 2px 3px #e4e8f0;
+}
+
+.card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #eff0f2;
+    border-radius: 1rem;
+}
+</style> 
+
+         
+
+{% endblock %}

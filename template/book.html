@@ -1,0 +1,133 @@
+{% extends 'v2admin.html' %}
+{% block content %}
+{% load static %}
+ <style>
+  .loginForm{
+   
+    background-color: blueviolet;
+    top: 50%;
+    left: 3%;
+    box-shadow: 1px 1px 4px #dcdcdc;
+    
+  }
+</style>
+<div class="container" style="margin-top: 100px;">
+ 
+ 
+  {% if messages %}
+<div class="messages">
+  {% for message in messages %}
+  <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>
+    {{ message }}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+  <form action="{% url 'add_book' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token  %}
+  <div class="loginForm col-lg-8 col-md-8 col-sm-8 p-4">
+    <h2 style="text-align: center;">Add Book</h2>
+    <div class="loginBody">
+      <label class="form-label">Book name</label>
+      <div class="form-group">
+        <div class="input-group mb-3">
+         
+          <input type="text" class="form-control form-control-m" name="bname" >
+          <div class="input-group-append">
+            <span class="input-group-text p-3"><i class="fa fa-user"></i></span>
+          </div>
+        </div>
+      </div>
+      <label class="form-label">Auther name</label>
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control form-control-m" name="aname" >
+            <div class="input-group-append">
+              <span class="input-group-text p-3"><i class="fa fa-lock"></i></span>
+            </div>
+          </div>
+        </div>
+        <label class="form-label">Category</label> <div class="form-group">
+          <div class="input-group mb-3">
+            <select id="country" name="sel" class="form-control form-control-m">
+              {% for i in category %}
+              <option value="{{i.id}}"   style="width: 20px; height: 50px;">{{i.category}}</option>
+              {% endfor %}
+  
+            </select>
+            <div class="input-group-append">
+              <span class="input-group-text p-3"><i class="fa fa-lock"></i></span>
+            </div>
+          </div>
+        </div>
+        <label class="form-label">Description</label>
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <textarea class="form-control form-control-m" name="des"></textarea>
+            <div class="input-group-append">
+              <span class="input-group-text p-3"><i class="fa fa-lock"></i></span>
+            </div>
+          </div>
+        </div>
+        <label class="form-label">Book stock</label>
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <input type="number" class="form-control form-control-m" name="stock"  >
+            <div class="input-group-append">
+              <span class="input-group-text p-3"><i class="fa fa-lock"></i></span>
+            </div>
+          </div>
+        </div>
+        <label class="form-label">Book Price</label>
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <input type="number" class="form-control form-control-m" name="price"  >
+            <div class="input-group-append">
+              <span class="input-group-text p-3"><i class="fa fa-lock"></i></span>
+            </div>
+          </div>
+        </div>
+        <label class="form-label">Rent Price</label>
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <input type="number" class="form-control form-control-m" name="book_rent"  >
+            <div class="input-group-append">
+              <span class="input-group-text p-3"><i class="fa fa-lock"></i></span>
+            </div>
+          </div>
+        </div>
+        <label class="form-label">Isbn</label>
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <input type="number" class="form-control form-control-m" name="isbn"  >
+            <div class="input-group-append">
+              <span class="input-group-text p-3"><i class="fa fa-lock"></i></span>
+            </div>
+          </div>
+        </div>
+        <label class="form-label">Image</label>
+        <div class="form-group">
+          <div class="input-group mb-3">
+           
+            <input type="file" class="form-control form-control-m" name="file" accept="image/*">
+            <div class="input-group-append">
+              <span class="input-group-text p-3"><i class="fa fa-lock"></i></span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group ">
+          <button type="submit" class="btn btn-block btn-m btn" style="background-color:rgb(207, 35, 124)  ;">Submit</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+
+
+
+</body>
+{% endblock %}
+</html>

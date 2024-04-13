@@ -1,0 +1,63 @@
+{% extends 'v2admin.html' %}
+{% block content %}
+{% load static %}
+<style>
+  button[type=submit]{
+    background-color: #d60672ed;
+
+  }
+</style>
+
+<div class="container w-50 p-5 "style="background-color: blueviolet; height: 300px;   margin-top: 200px ">
+  {% if messages %}
+  <div class="messages">
+    {% for message in messages %}
+    <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>
+      {{ message }}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  
+  <form action="{% url 'add_category' %}" method="post">
+      {% csrf_token %}
+   
+  
+      <!-- Username input -->
+      <div class="form-outline mb-4" >
+         
+          <label class="form-label">Category Name</label>
+          <input type="text" class="form-control" name="category" />
+     
+       
+      </div>
+    
+  
+    
+      <!-- 2 column grid layout for inline styling -->
+      <div class="row mb-4">
+        <!-- <div class="col d-flex justify-content-center"> -->
+          <!-- Checkbox -->
+          <!-- <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+            <label class="form-check-label" for="form2Example31"> Remember me </label>
+          </div>
+        </div> -->
+    
+        <!-- <div class="col">
+      
+          <a href="#!">Forgot password?</a>
+        </div> -->
+      </div>
+    
+      <!-- Submit button -->
+      <button type="submit" class="btn btn- btn-block mb-4">Submit</button>
+    
+      <!-- Register buttons -->
+  </form>
+
+</div>
+
+{% endblock %}
+    

@@ -1,0 +1,368 @@
+{% extends 'v2admin2.html' %}
+{% block content %}
+{% load static %}
+<style>
+  section{
+    bottom: 0%;
+  }
+</style>
+
+
+<div class="col-lg-9 col-md-8" style="margin-top: 80px;" >
+  <div class="table-responsive">
+    <h2 style="text-align: center; color:black">User Admit Page</h2>
+
+      <table class="table table-striped">
+          <thead class="thead-inverse">
+              
+              <tr>
+               
+                <th scope="col">Name</th> 
+                <th scope="col">Username</th>
+
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Action</th>
+                
+             
+              </tr>
+          </thead>
+          <tbody>
+              {% for d in data %}
+              <tr>
+            
+                <td>{{d.user.first_name}}{{d.user.last_name}}</td>
+                <td>{{d.user.username}}</td>
+                <td>{{d.user.email}}</td>
+                <td>{{d.number}}</td>
+                <td>
+                  <a href="{% url 'approve' d.id %}" class="btn btn-success badge">Approve</a>
+                  <a href="{% url 'disapprove' d.id %}" class="btn btn-danger badge">Disapprove</a>
+
+                </td>
+              
+              </tr>
+              {% endfor %}
+          </tbody>
+
+          
+      </table>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- {% for i in data %}
+        {{i.user.first_name}}
+        {{i.user.last_name}}
+        {{i.user.email}}
+        {{i.uImage}}
+        <img src='{{i.uImage.url}}'>
+    {% endfor %} -->
+    <!-- <section class="section">
+        <!-- <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="card">
+                        <div class="card-header">
+                            <h1 class="fw-bold"></h1>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        
+                                        <th>Id</th>
+                                        <th>profile</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>email</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                          
+                                   {% for i in data %}
+                                      <tr>
+                                          <td>{{ i.id }} </td>
+                                          <td><img src="{{i.uImage.url}}"></td>
+                                          <td>{{i.user.first_name }} </td>
+                                          <td>{{i.user.last_name}}</td>
+                                          <td>{{i.user.email}}</td>
+                                        
+                                          <td>
+                                          <a href="" class="btn btn-success badge">Approve</a>
+                                          <a href="" class="btn btn-danger badge">Disapprove</a>
+                                          </td>
+                                          
+                                      </tr>
+                            {% endfor %} 
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>  -->
+<!-- <div class="container w-150 p-5 mt-1" style="background-color: rgb(173, 246, 85);   margin-top: 50px;" >
+    <table class="table table-hover">
+        <thead class="thead-dark " style="width: 100px;">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">first name</th>
+              <th scope="col">lastname</th> -->
+              <!-- <!-- <th scope="col">Email</th> -->
+              <!-- <th>Action</th> 
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr>
+              <td>{{i.id}}</td>
+              <td>{{i.user.first_name }} </td>
+              <td>{{i.user.last_name}}</td> -->
+              <!-- <td>{{i.user.email }} </td>  -->
+              <!-- <td>
+                <a href="{% url 'approve' i.id %}" class="btn btn-success badge">Approve</a>
+                <a href="{% url 'disapprove' i.id %}" class="btn btn-danger badge">Disapprove</a>
+              </td> -->
+            <!-- </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div> -->
+
+
+
+
+  <!-- <style>
+    @media
+  only screen 
+and (max-width: 760px), (min-device-width: 768px) 
+and (max-device-width: 1024px)  { -->
+
+    <!-- /* Force table to not be like tables anymore */
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+tr {
+  margin: 0 0 2rem 0;
+}
+  
+tr:nth-child(odd) {
+  background:  rgb(173, 246, 85);
+}
+
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 60%;
+    }
+
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 0;
+        left: 6px;
+        width: 45%;
+        padding-right: 60px;
+        white-space: nowrap;
+    }
+
+    /*
+    Label the data
+You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+    */
+    td:nth-of-type(1):before { content: " Name"; }
+    
+    td:nth-of-type(3):before { content: "Email"; }
+    td:nth-of-type(3):before { content: "Action"; }
+    
+    
+    
+}
+</style>
+<div class="container">
+        
+
+    <table role="table " border="2px">
+        <thead role="rowgroup" style="background-color: rgb(238, 19, 147);">
+          <tr role="row">
+           
+            <th role="columnheader"> Name </th>
+            
+            
+            <th role="columnheader">Email</th>
+            
+            <th role="columnheader">Action</th>
+         
+            
+            
+            
+            
+            
+            
+            
+          </tr>
+          </thead>
+          <tbody role="rowgroup" style="background-color: rgb(173, 246, 85);">
+            {% for i in data %}
+            <tr role="row">
+              <td role="cell">{{ i.user.first_name }} {{i.user.last_name }} </td>
+             <td role="cell">{{i.user.email}}</td>
+             <td>
+             <a href="{% url 'approve' i.id %}" class="btn btn-success badge">Approve</a>
+             <a href="{% url 'disapprove' i.id %}" class="btn btn-danger badge">Disapprove</a></td>
+
+              
+            
+              
+              
+              
+             
+            </tr>
+          {% endfor %}
+          
+          </tbody>
+    </table>
+    </div> -->
+    <!-- <style>
+        table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+/* general styling */
+body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.25;
+}
+    </style>
+    <table>
+       
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Action</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+        {% for i in data %}
+          <tr>
+            <td data-label="Name">{{ i.user.first_name }} {{i.user.last_name }} </td>
+            <td data-label="Email">{{i.user.email}}</td>
+            <td data-label="Action">
+            <a href="{% url 'approve' i.id %}" class="btn btn-success badge">Approve</a>
+             <a href="{% url 'disapprove' i.id %}" class="btn btn-danger badge">Disapprove</a></td>
+            </td>
+            
+          </tr>
+        {% endfor %}
+          
+        </tbody>
+      </table> -->
+  
+</body>
+{% endblock %}
+</html>

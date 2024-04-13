@@ -1,0 +1,52 @@
+{% extends 'navfour1.html' %}
+{% block content %}
+{% load static %}
+<img src="{% static 'images/image2.jpg' %}" class="d-block w-100" alt="Responsive image" height="350px" >
+
+
+
+
+<body>
+  <div class="container" style="background-color: rgb(44, 178, 219)" >
+    <u>
+    <h2 style="text-align: center;" > Not Issued Book Here!!!! </h2></u></div>
+    <!-- {% for i in issues %}
+    {{i.book.book_name}}
+    <h1 style="color: red;">not issued</h1>
+    {% empty %}
+    <h2 style="text-align: center;">Your are not requested for any book</h2>
+    {% endfor %} -->
+    <div class="table-responsive">
+        <table class="table" style="background-color:  #82c5dc;" >
+          <thead>
+            <tr>
+              
+              <th scope="col">Image</th>
+              <th scope="col">Book Name</th>
+              <th scope="col">Rent Price</th>
+              <th scope="col">Auther name</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in issues %}
+            <tr>
+             
+              <td><img src="{{i.book.Image.url}}" style="width: 30px;"></td>
+              <td>{{i.book.book_name}}</td>
+              <td>{{i.book.book_price}}</td>
+              <td>{{i.book.auther_name}}</td>
+              <td>{{i.quantity}}</td>
+              <td><button type="button" class="btn btn-primary">Pending</button></td>
+
+              
+             
+            </tr>
+            {% endfor %}
+            
+            
+          </tbody>
+        </table>
+      </div>
+{% endblock %}
